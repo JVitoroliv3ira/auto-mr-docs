@@ -5,6 +5,7 @@ class Config:
     PROJECT_ID = getenv('CI_PROJECT_ID')
     MR_ID = getenv('CI_MERGE_REQUEST_IID')
     GITLAB_TOKEN = getenv('GITLAB_TOKEN')
+    DEEPSEEK_API_URL = getenv('DEEPSEEK_API_URL')
     DEEPSEEK_API_KEY = getenv('DEEPSEEK_API_KEY')
     DEBUG = getenv('DEBUG', "False")
     

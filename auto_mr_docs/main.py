@@ -1,21 +1,25 @@
-from config import Config
-from logger import LoggerConfig
+from local_model import LocalModel
+from open_ai_api import OpenAIAPI
 
 def main() -> None:
-    logger = LoggerConfig.get_logger()
+    commits = [
+        "Add support for two-factor authentication (2FA) in login",
+        "Fix issue where users could not reset their passwords",
+        "Refactor user session management for better scalability",
+        "Optimize database queries for fetching user profiles",
+        "Fix incorrect validation on email field during signup",
+        "Improve error messages in API responses",
+        "Fix UI bug in the dashboard layout on mobile devices",
+        "Add logs for tracking failed login attempts",
+        "Enhance security by enforcing stronger password policies",
+        "Refactor payment gateway integration for better maintainability"
+    ]
     
-    try:
-        logger.info("Iniciando auto-mr-docs... 🚀")
-        logger.info(f"GITLAB_API_URL: {Config.GITLAB_API_URL}")
-        logger.info(f"PROJECT_ID: {Config.PROJECT_ID}")
-        logger.info(f"MR_ID: {Config.MR_ID}")
-        logger.info(f"GITLAB_TOKEN: {'***' if Config.GITLAB_TOKEN else 'NÃO DEFINIDO'}")
-        logger.info(f"DEEPSEEK_API_KEY: {'***' if Config.DEEPSEEK_API_KEY else 'NÃO DEFINIDO'}")
-
-        logger.info("Configurações carregadas com sucesso! ✅")
-
-    except ValueError as e:
-        logger.error(f"Erro crítico na configuração: {e}")
+    local_model = LocalModel()    
+    print(local_model.generate_description_by_commits(commits))
+    
+    # open_ai = OpenAIAPI()
+    # print(open_ai.generate_description_by_commits(commits))
 
 if __name__ == '__main__':
     main()
