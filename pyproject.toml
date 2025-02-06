@@ -1,0 +1,23 @@
+[project]
+name = "auto-mr-docs"
+version = "0.1.0"
+description = "Bot para geração automática de descrições de Merge Requests no GitLab"
+authors = [
+    {name = "JVitoroliv3ira",email = "jvitoroliveira0711@gmail.com"}
+]
+license = {text = "GPL-3.0"}
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "requests (>=2.32.3,<3.0.0)"
+]
+
+
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.poetry.group.dev.dependencies]
+pytest = "^8.3.4"
+pytest-mock = "^3.14.0"
+
