@@ -1,19 +1,15 @@
 import logging
 import sys
 
-from config import Config
-
 class LoggerConfig:
-    
     @staticmethod
-    def get_logger(name: str = "auto-mr-docs") -> logging.Logger:
+    def get_logger(name: str = 'auto-mr-docs') -> logging.Logger:
         logger = logging.getLogger(name)
         
         if logger.hasHandlers():
             return logger
         
-        debug_mode = Config.DEBUG.lower() == "true"
-        logger.setLevel(logging.DEBUG if debug_mode else logging.INFO)
+        logger.setLevel(logging.DEBUG)
         
         console_handler = logging.StreamHandler(sys.stdout)
         console_handler.setLevel(logging.DEBUG)
@@ -24,3 +20,5 @@ class LoggerConfig:
         logger.addHandler(console_handler)
         
         return logger
+
+        
