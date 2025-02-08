@@ -8,22 +8,22 @@ def cli() -> None:
 @click.command()
 @click.option(
     '--mode', 
-    type=click.Choice(['openai', 'deepseek', 'ollama'], case_sensitive=False),
+    type=click.Choice(['openai', 'ollama'], case_sensitive=False),
     default="ollama", 
     show_default=True,
-    help="AI mode to use for summarization (openai, deepseek, ollama)."
+    help="AI mode to use for summarization (openai, ollama)."
 )
 @click.option(
     '--api-key', 
     type=str, 
     required=False, 
-    help="API key (required for openai and deepseek modes)."
+    help="API key (required for openai mode)."
 )
 @click.option(
     '--api-url', 
     type=str, 
     required=False, 
-    help="API URL (optional for openai and deepseek)."
+    help="API URL (optional for openai mode)."
 )
 @click.option(
     '--ollama-model', 
