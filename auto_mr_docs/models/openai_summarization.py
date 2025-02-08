@@ -8,8 +8,8 @@ from models.base import Summarization
 logger = LoggerConfig.get_logger()
 
 class OpenAISummarization(Summarization):
-    def __init__(self, api_key: str, api_url: Optional[str] = None):
-        super().__init__(api_key=api_key, api_url=api_url)
+    def __init__(self, api_key: str, api_url: Optional[str] = None, max_tokens: Optional[int] = 200, timeout: Optional[int] = 1024):
+        super().__init__(api_key=api_key, api_url=api_url, max_tokens=max_tokens, timeout=timeout)
         logger.info(f"OpenAISummarization initialized.")
         self.client = openai.OpenAI(api_key=api_key, base_url=api_url) if api_url else openai.OpenAI(api_key=api_key)
     
@@ -27,8 +27,8 @@ class OpenAISummarization(Summarization):
                     {"role": "system", "content": "You are an AI assistant specialized in generating structured and professional Merge Request summaries."},
                     {"role": "user", "content": get_prompt(commits)}
                 ],
-                max_tokens=200,
-                timeout=1024,
+                max_tokens=self.max_tokens,
+                timeout=self.timeout,
             )
 
             summary = response.choices[0].message.content.strip()

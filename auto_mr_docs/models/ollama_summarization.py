@@ -8,8 +8,8 @@ from config.config import get_prompt
 logger = LoggerConfig.get_logger()
 
 class OllamaSummarization(Summarization):
-    def __init__(self, ollama_model: str = "mistral"):
-        super().__init__(ollama_model=ollama_model)
+    def __init__(self, ollama_model: str = "mistral", timeout: int = 1024):
+        super().__init__(ollama_model=ollama_model, timeout=timeout)
         logger.info(f"OllamaSummarization initialized with model: {ollama_model}")
 
     def summarize(self, commits: List[str]) -> str:
@@ -24,7 +24,7 @@ class OllamaSummarization(Summarization):
                 ["ollama", "run", self.ollama_model, get_prompt(commits)],
                 capture_output=True,
                 text=True,
-                timeout=1024
+                timeout=self.timeout
             )
             response = result.stdout.strip()
 

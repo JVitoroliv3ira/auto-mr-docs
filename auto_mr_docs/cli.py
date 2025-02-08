@@ -11,28 +11,42 @@ def cli() -> None:
     type=click.Choice(['openai', 'ollama'], case_sensitive=False),
     default="ollama", 
     show_default=True,
-    help="AI mode to use for summarization (openai, ollama)."
+    help="AI mode to use for summarization. Options: openai, ollama."
 )
 @click.option(
     '--api-key', 
     type=str, 
     required=False, 
-    help="API key (required for openai mode)."
+    help="API key (Required for OpenAI mode)."
 )
 @click.option(
     '--api-url', 
     type=str, 
     required=False, 
-    help="API URL (optional for openai mode)."
+    help="API URL (Optional for OpenAI mode)."
+)
+@click.option(
+    '--max-tokens',
+    type=int,
+    default=200,
+    show_default=True,
+    help="Maximum number of tokens for the summary (Only for OpenAI mode)."
 )
 @click.option(
     '--ollama-model', 
     type=str, 
     default="mistral", 
     show_default=True,
-    help="Ollama model to use (default: mistral)."
+    help="Ollama model to use. Default: mistral."
 )
-def summarize(mode: str, api_key: str, api_url: str, ollama_model: str) -> None:
+@click.option(
+    '--timeout',
+    type=int,
+    default=1024,
+    show_default=True,
+    help="Timeout duration in seconds."
+)
+def summarize(mode: str, api_key: str, api_url: str, max_tokens: int, ollama_model: str, timeout: int) -> None:
     if mode in ['openai', 'deepseek'] and not api_key:
         raise click.BadParameter(f"The API key is required for the {mode} mode. Use --api-key.")
     
@@ -49,7 +63,14 @@ def summarize(mode: str, api_key: str, api_url: str, ollama_model: str) -> None:
         "Revert: removed experimental feature due to instability",
     ]
     
-    summarizer = SummarizationFactory.get_summarizer(mode=mode, api_key=api_key, api_url=api_url, ollama_model=ollama_model)
+    summarizer = SummarizationFactory.get_summarizer(
+        mode=mode,
+        api_key=api_key,
+        api_url=api_url,
+        max_tokens=max_tokens,
+        ollama_model=ollama_model,
+        timeout=timeout
+    )
     result = summarizer.summarize(commits)
     print(result)
 
