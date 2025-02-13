@@ -1,9 +1,9 @@
 from subprocess import run, CalledProcessError, TimeoutExpired
 from typing import List
 
-from models.base import Summarization
-from config.logger import LoggerConfig
-from config.config import get_prompt
+from auto_mr_docs.models.base import Summarization
+from auto_mr_docs.config.logger import LoggerConfig
+from auto_mr_docs.config.config import get_prompt
 
 logger = LoggerConfig.get_logger()
 

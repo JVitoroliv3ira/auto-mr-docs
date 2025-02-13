@@ -1,8 +1,10 @@
+#!/usr/bin/env python3
+
 import sys
 import click
-from config.logger import LoggerConfig
-from services.factory import SummarizationFactory
-from services.gitlab_service import GitlabService
+from auto_mr_docs.config.logger import LoggerConfig
+from auto_mr_docs.services.factory import SummarizationFactory
+from auto_mr_docs.services.gitlab_service import GitlabService
 
 logger = LoggerConfig.get_logger()
 

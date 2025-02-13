@@ -1,9 +1,9 @@
 import openai
 
 from typing import List, Optional
-from config.config import get_prompt
-from config.logger import LoggerConfig
-from models.base import Summarization
+from auto_mr_docs.config.config import get_prompt
+from auto_mr_docs.config.logger import LoggerConfig
+from auto_mr_docs.models.base import Summarization
 
 logger = LoggerConfig.get_logger()
 

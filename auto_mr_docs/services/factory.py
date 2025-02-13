@@ -1,8 +1,8 @@
 from typing import Optional, Dict, Type
 
-from models.base import Summarization
-from models.openai_summarization import OpenAISummarization
-from models.ollama_summarization import OllamaSummarization
+from auto_mr_docs.models.base import Summarization
+from auto_mr_docs.models.openai_summarization import OpenAISummarization
+from auto_mr_docs.models.ollama_summarization import OllamaSummarization
 
 class SummarizationFactory:
     _summarizers: Dict[str, Type[Summarization]] = {
