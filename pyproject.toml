@@ -14,7 +14,10 @@ dependencies = [
     "openai (>=1.61.1,<2.0.0)",
     "python-gitlab (>=5.6.0,<6.0.0)"
 ]
+packages = [{ include = "auto_mr_docs", from = "auto_mr_docs" }]
 
+[tool.poetry.scripts]
+auto-mr-docs = "auto_mr_docs.cli:cli"
 
 [build-system]
 requires = ["poetry-core>=2.0.0,<3.0.0"]
