@@ -2,21 +2,32 @@
 
 📝 **Automação Inteligente para Descrições de Merge Requests no GitLab**  
 
-O **auto-mr-docs** é um bot que gera automaticamente descrições detalhadas para Merge Requests (MRs) no **GitLab**. Ele analisa os commits associados ao MR e usa **DeepSeek AI** para criar uma descrição clara, bem estruturada e profissional, ajudando equipes a manterem documentação padronizada e informativa.  
+O **auto-mr-docs** é um bot que gera automaticamente descrições detalhadas para Merge Requests (MRs) no **GitLab**. Ele analisa os commits associados ao MR e utiliza **modelos de IA** para criar descrições claras, bem estruturadas e profissionais. Com suporte para **modelos locais via Ollama, OpenAI e DeepSeek AI**, ele ajuda equipes a manterem uma documentação padronizada e informativa sem esforço manual.  
 
 ---
 
 ## **✨ Recursos**
 ✅ **Geração Automática de Descrições** para MRs no GitLab  
 ✅ **Integração Simples via GitLab CI/CD** – Sem necessidade de serviços externos  
-✅ **Uso de Inteligência Artificial (DeepSeek)** para criar resumos mais precisos  
+✅ **Suporte a Diferentes Modelos de IA**:  
+   - **Ollama** (execução local, sem necessidade de API externa)  
+   - **OpenAI** (para quem prefere modelos na nuvem)  
+   - **DeepSeek AI**  
 ✅ **Execução via Docker** – Fácil implementação e configuração  
 ✅ **Redução de Tempo e Erro Humano** – Descrições mais padronizadas e informativas  
 
 ---
 
+## **⚙️ Como Funciona?**
+1. O bot analisa os commits do Merge Request.  
+2. Envia os dados para um dos modelos de IA configurados (Ollama, OpenAI ou DeepSeek).  
+3. Gera uma descrição detalhada e estruturada automaticamente.  
+4. Atualiza a descrição do MR no GitLab.  
+
+---
+
 ## **📦 Em Desenvolvimento**
-Este projeto ainda está em fase de implementação. Em breve, disponibilizaremos as instruções de uso e integração.  
+O projeto ainda está em fase de implementação. Em breve, disponibilizaremos as instruções completas de instalação, configuração e integração.  
 
 ---
 
