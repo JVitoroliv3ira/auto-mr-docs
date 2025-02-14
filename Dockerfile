@@ -4,12 +4,13 @@ WORKDIR /app
 
 RUN apk add --no-cache gcc musl-dev libffi-dev libc6-compat
 
+RUN pip install --no-cache-dir poetry
+
 COPY pyproject.toml README.md ./
+
 RUN poetry lock --no-interaction
 
-RUN pip install --no-cache-dir poetry \
-    && poetry config virtualenvs.create false \
-    && poetry install --without dev --no-interaction --no-root
+RUN poetry config virtualenvs.create false && poetry install --without dev --no-interaction --no-root
 
 COPY . .
 
@@ -26,5 +27,5 @@ COPY --from=builder /app/dist/*.whl ./
 RUN pip install --no-cache-dir --no-compile ./*.whl \
     && rm -rf /root/.cache/pip
 
-ENTRYPOINT ["/bin/sh", "-c"]
+ENTRYPOINT ["auto-mr-docs"]
 CMD ["auto-mr-docs --help"]
