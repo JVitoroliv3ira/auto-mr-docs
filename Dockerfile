@@ -4,7 +4,8 @@ WORKDIR /app
 
 RUN apk add --no-cache gcc musl-dev libffi-dev libc6-compat
 
-COPY pyproject.toml poetry.lock README.md ./
+COPY pyproject.toml README.md ./
+RUN poetry lock --no-interaction
 
 RUN pip install --no-cache-dir poetry \
     && poetry config virtualenvs.create false \
