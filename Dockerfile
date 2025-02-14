@@ -27,5 +27,5 @@ COPY --from=builder /app/dist/*.whl ./
 RUN pip install --no-cache-dir --no-compile ./*.whl \
     && rm -rf /root/.cache/pip
 
-ENTRYPOINT ["auto-mr-docs"]
+ENTRYPOINT ["/bin/sh", "-c"]
 CMD ["auto-mr-docs --help"]
