@@ -1,5 +1,6 @@
-# **auto-mr-docs** 🚀  
-Automação Inteligente para Descrições de Merge Requests no GitLab
+# **auto-mr-docs** 🤖  
+
+> Automação Inteligente para Descrições de Merge Requests no GitLab
 
 ## **Índice**
 1. [Visão Geral](#-visão-geral)  
@@ -75,7 +76,9 @@ merge_request_summarization:
 > - Se estiver usando **OpenAI**, lembre-se de definir e exportar a variável de ambiente `OPENAI_API_KEY`.  
 > - Ajuste as regras de execução (`rules`) conforme o seu fluxo de trabalho.  
 
----
+### Exemplo Prático do **auto-mr-docs**
+
+![Demonstração do auto-mr-docs](./assets/gifs/auto_mr_docs.gif)
 
 ## **📦 Status de Desenvolvimento**  
 - O projeto encontra-se em fase de implementação.  
