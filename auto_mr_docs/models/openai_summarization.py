@@ -22,14 +22,18 @@ class OpenAISummarization(Summarization):
         
         try:
             response = self.client.chat.completions.create(
-                model="gpt-4",
+                model="gpt-3.5-turbo",
                 messages=[
-                    {"role": "system", "content": "You are an AI assistant specialized in generating structured and professional Merge Request summaries."},
                     {"role": "user", "content": get_prompt(commits)}
                 ],
-                max_tokens=self.max_tokens,
+                max_completion_tokens=self.max_tokens,
                 timeout=self.timeout,
             )
+            
+            prompt_tokens = response.usage.prompt_tokens
+            completion_tokens = response.usage.completion_tokens
+            total_tokens = response.usage.total_tokens
+            logger.info(f"Token usage - Prompt: {prompt_tokens}, Completion: {completion_tokens}, Total: {total_tokens}")
 
             summary = response.choices[0].message.content.strip()
             return summary
